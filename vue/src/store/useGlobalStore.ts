@@ -385,7 +385,8 @@ export const useGlobalStore = defineStore(
       batchDownloadCompress: ref(false),
       batchDownloadPackOnly: ref(false),
       magicSwitchTiktokView,
-      showRandomImageInStartup
+      showRandomImageInStartup,
+      comfyUISamplerNodeName: ''
     }
   },
   {

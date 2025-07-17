@@ -1,3 +1,5 @@
+import re
+
 from PIL import Image
 
 from scripts.iib.tool import (
@@ -11,8 +13,10 @@ from scripts.iib.tool import (
 from scripts.iib.parsers.model import ImageGenerationInfo, ImageGenerationParams
 from scripts.iib.logger import logger
 
-
 class ComfyUIParser:
+
+    sampler_rex = re.compile(r"^KSampler.*$")
+
     def __init__(self):
         pass
 
@@ -29,7 +33,7 @@ class ComfyUIParser:
                 info += ", Source Identifier: ComfyUI"
                 params = parse_generation_parameters(info)
             else:
-                params = get_comfyui_exif_data(img)
+                params = get_comfyui_exif_data(img, clz.sampler_rex)
                 info = comfyui_exif_data_to_str(params)
         except Exception as e:
             logger.error("parse comfyui image failed. prompt:")

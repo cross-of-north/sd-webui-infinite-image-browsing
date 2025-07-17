@@ -329,6 +329,7 @@ You can specify which snapshot to restore to when starting IIB in the global set
   magicSwitchEnabled: '🎬 ON - Click media files to enter TikTok View',
   magicSwitchDisabled: '📁 OFF - Click media files to open normally',
   magicSwitchDetailDesc: 'Click images and videos to directly enter TikTok-style browsing experience',
+  comfyUISamplerNodeName: 'ComfyUI Sampler Name',
   
   // Auto play related
   autoPlay: 'Auto Play',

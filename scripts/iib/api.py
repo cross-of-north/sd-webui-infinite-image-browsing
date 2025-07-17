@@ -1,4 +1,5 @@
 import base64
+import re
 from datetime import datetime, timedelta
 import io
 import os
@@ -8,6 +9,7 @@ import sqlite3
 
 
 from scripts.iib.dir_cover_cache import get_top_4_media_info
+from scripts.iib.parsers.comfyui import ComfyUIParser
 from scripts.iib.tool import (
     get_created_date_by_stat,
     get_video_type,
@@ -114,6 +116,11 @@ async def verify_secret(request: Request):
         ).hexdigest()
     if mem["secret_key_hash"] != token:
         raise HTTPException(status_code=401, detail="Unauthorized")
+
+conn = DataBase.get_conn()
+app_fe_setting = GlobalSetting.get_all_settings(conn)
+if app_fe_setting.get("comfyUISamplerNodeName") is not None:
+    ComfyUIParser.sampler_rex = re.compile(app_fe_setting.get("comfyUISamplerNodeName"))
 
 DEFAULT_BASE = "/infinite_image_browsing"
 def infinite_image_browsing_api(app: FastAPI, **kwargs):

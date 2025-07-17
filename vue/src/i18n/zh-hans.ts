@@ -308,6 +308,7 @@ export const zhHans = {
   magicSwitchEnabled: '🎬 开启 - 点击媒体文件直接进入 TikTok 观看',
   magicSwitchDisabled: '📁 关闭 - 点击媒体文件正常打开',
   magicSwitchDetailDesc: '点击图片和视频文件时直接进入 TikTok 式浏览体验',
+  comfyUISamplerNodeName: 'ComfyUI 采样器名称',
   
   // 自动轮播相关
   autoPlay: '自动轮播',
