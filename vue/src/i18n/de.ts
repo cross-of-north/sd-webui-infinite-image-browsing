@@ -135,6 +135,7 @@ export const de: Partial<IIBI18nMap> = {
   magicSwitchEnabled: '🎬 EIN - Klicken Sie auf Mediendateien, um die TikTok-Ansicht zu öffnen',
   magicSwitchDisabled: '📁 AUS - Klicken Sie auf Mediendateien, um sie normal zu öffnen',
   magicSwitchDetailDesc: 'Klicken Sie auf Bilder und Videos, um direkt in die TikTok-ähnliche Browsing-Erfahrung einzusteigen',
+  comfyUISamplerNodeName: 'ComfyUI Sampler-Knotenname Regex',
   randomImageSettings: 'Zufallsbild-Einstellungen',
   showRandomImageInStartup: 'Zufallsbild in Startseite anzeigen',
   showRandomImageInStartupDesc: 'Kontrolliert, ob die Zufallsbild-Option auf der Startseite angezeigt wird',

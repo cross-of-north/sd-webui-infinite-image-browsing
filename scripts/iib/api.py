@@ -117,10 +117,13 @@ async def verify_secret(request: Request):
     if mem["secret_key_hash"] != token:
         raise HTTPException(status_code=401, detail="Unauthorized")
 
-conn = DataBase.get_conn()
-app_fe_setting = GlobalSetting.get_all_settings(conn)
-if app_fe_setting.get("comfyUISamplerNodeName") is not None:
-    ComfyUIParser.sampler_rex = re.compile(app_fe_setting.get("comfyUISamplerNodeName"))
+def refetch_settings():
+    conn = DataBase.get_conn()
+    settings = GlobalSetting.get_all_settings(conn).get("global", {})
+    if settings.get("comfyUISamplerNodeName") is not None:
+        ComfyUIParser.sampler_rex = re.compile(settings.get("comfyUISamplerNodeName"))
+
+refetch_settings()
 
 DEFAULT_BASE = "/infinite_image_browsing"
 def infinite_image_browsing_api(app: FastAPI, **kwargs):
@@ -320,6 +323,7 @@ def infinite_image_browsing_api(app: FastAPI, **kwargs):
     async def app_fe_setting(req: AppFeSettingReq):
         conn = DataBase.get_conn()
         GlobalSetting.save_setting(conn, req.name, req.value)
+        refetch_settings()
 
     class AppFeSettingDelReq(BaseModel):
         name: str
@@ -328,6 +332,7 @@ def infinite_image_browsing_api(app: FastAPI, **kwargs):
     async def remove_app_fe_setting(req: AppFeSettingDelReq):
         conn = DataBase.get_conn()
         GlobalSetting.remove_setting(conn, req.name)
+        refetch_settings()
     
     @app.get(f"{api_base}/version", dependencies=[Depends(verify_secret)])
     async def get_version():
