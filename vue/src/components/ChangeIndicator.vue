@@ -79,7 +79,7 @@ function hasOtherProps(diff: Record<string, unknown>) {
                         </td>
                     </tr>
                     <tr v-if="'scheduleType' in genDiffToPrevious.diff">
-                        <td><span class="schedulerTypeChangeIndicator">Schedule Type</span></td>
+                        <td><span class="scheduleTypeChangeIndicator">Schedule Type</span></td>
                         <td><strong>{{ genDiffToPrevious.diff.scheduleType[0] }}</strong><br/> vs {{ genDiffToPrevious.diff.scheduleType[1] }}
                         </td>
                     </tr>
@@ -320,5 +320,15 @@ table tr td:first-child {
 
 .sizeChangeIndicator {
     background-color: #678a6c;
+    color: #efefef;
+}
+
+.samplerChangeIndicator {
+    background-color: #8e5b5b;
+    color: #efefef;
+}
+
+.scheduleTypeChangeIndicator {
+    background-color: #8e7e5b;
     color: #efefef;
 }</style>
