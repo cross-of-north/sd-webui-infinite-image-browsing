@@ -443,6 +443,7 @@ def get_comfyui_exif_data(img: Image, sampler_rex: None | re.Pattern[AnyStr] = N
     meta_key = '3'
     data: Dict[str, any] = json.loads(prompt)
     if sampler_rex is None:
+        # fallback value in case someone calls this not from ComfyUIParser.parse()
         sampler_rex = re.compile(r"^KSampler.*$")
     for i in data.keys():
         try:

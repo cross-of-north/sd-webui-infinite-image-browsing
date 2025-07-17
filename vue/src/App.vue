@@ -28,7 +28,6 @@ const watchGlobalSettingChange = once(async () => {
     if (globalStore.conf?.is_readonly === true) {
       return
     }
-    console.log("globalStore update")
     const conf = {} as Dict
     presistKeysFiltered.forEach((key) => {
       conf[key] = cloneDeep((globalStore as any)[key])

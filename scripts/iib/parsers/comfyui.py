@@ -1,5 +1,4 @@
 import re
-
 from PIL import Image
 
 from scripts.iib.tool import (
