@@ -313,6 +313,7 @@ export const zhHant: Partial<IIBI18nMap> = {
   magicSwitchEnabled: '🎬 開啟 - 點擊媒體文件直接進入 TikTok 觀看',
   magicSwitchDisabled: '📁 關閉 - 點擊媒體文件正常打開',
   magicSwitchDetailDesc: '點擊圖片和視頻文件時直接進入 TikTok 式瀏覽體驗',
+  comfyUISamplerNodeName: 'ComfyUI 採樣器節點名稱正則表達式',
   
   // 自動輪播相關
   autoPlay: '自動輪播',

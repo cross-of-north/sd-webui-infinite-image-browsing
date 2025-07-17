@@ -5,7 +5,7 @@ import platform
 import re
 import tempfile
 import subprocess
-from typing import Dict, List
+from typing import Dict, List, AnyStr
 import sys
 import piexif
 import piexif.helper
@@ -429,7 +429,7 @@ def is_img_created_by_comfyui(img: Image):
 def is_img_created_by_comfyui_with_webui_gen_info(img: Image):
     return is_img_created_by_comfyui(img) and img.info.get('parameters')
 
-def get_comfyui_exif_data(img: Image):
+def get_comfyui_exif_data(img: Image, sampler_rex: None | re.Pattern[AnyStr] = None):
     if img.format == "PNG":
         prompt = img.info.get('prompt')
     elif img.format == "WEBP":
@@ -442,9 +442,12 @@ def get_comfyui_exif_data(img: Image):
         return {}
     meta_key = '3'
     data: Dict[str, any] = json.loads(prompt)
+    if sampler_rex is None:
+        # fallback value in case someone calls this not from ComfyUIParser.parse()
+        sampler_rex = re.compile(r"^KSampler.*$")
     for i in data.keys():
         try:
-            if data[i]["class_type"].startswith("KSampler"):
+            if sampler_rex.match(data[i]["class_type"]):
                 meta_key = i
                 break
         except:

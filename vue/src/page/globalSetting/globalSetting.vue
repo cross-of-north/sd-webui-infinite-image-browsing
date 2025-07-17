@@ -155,6 +155,9 @@ const disableMaximize = useLocalStorage(prefix+'disable_maximize', false)
         <a-switch v-model:checked="disableMaximize" />
         <sub style="padding-left: 8px;color: #666;">{{ $t('takeEffectAfterReloadPage') }}</sub>
       </a-form-item>
+      <a-form-item :label="$t('comfyUISamplerNodeName')">
+        <a-input v-model:value="globalStore.comfyUISamplerNodeName" />
+      </a-form-item>
       <h2>{{ t('shortcutKey') }}</h2>
       <a-form-item :label="item.label" v-for="item in shortcutsList" :key="item.key">
         <div class="col" :class="{ conflict: isShortcutConflict(globalStore.shortcut[item.key] + '') }"

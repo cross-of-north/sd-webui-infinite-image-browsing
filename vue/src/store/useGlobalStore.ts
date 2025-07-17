@@ -192,7 +192,8 @@ export const presistKeys = [
   'batchDownloadCompress',
   'batchDownloadPackOnly',
   'magicSwitchTiktokView',
-  'showRandomImageInStartup'
+  'showRandomImageInStartup',
+  'comfyUISamplerNodeName'
 ]
 
 function cellWidthMap(x: number): number {
@@ -385,7 +386,8 @@ export const useGlobalStore = defineStore(
       batchDownloadCompress: ref(false),
       batchDownloadPackOnly: ref(false),
       magicSwitchTiktokView,
-      showRandomImageInStartup
+      showRandomImageInStartup,
+      comfyUISamplerNodeName: ref('')
     }
   },
   {
