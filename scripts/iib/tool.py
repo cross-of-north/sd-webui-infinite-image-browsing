@@ -460,7 +460,7 @@ def get_comfyui_exif_data(img: Image, sampler_rex: None | re.Pattern[AnyStr] = N
     # https://github.com/jiw0220/stable-diffusion-image-metadata/blob/00b8d42d4d1a536862bba0b07c332bdebb2a0ce5/src/index.ts#L130
     meta["Steps"] = KSampler_entry.get("steps", "Unknown")
     meta["Sampler"] = KSampler_entry["sampler_name"]
-    meta["Scheduler"] = KSampler_entry.get("scheduler", "Unknown")
+    meta["Schedule type"] = KSampler_entry.get("scheduler", "Unknown")
     meta["Model"] = data[KSampler_entry["model"][0]]["inputs"].get("ckpt_name")
     meta["Source Identifier"] = "ComfyUI"
     def get_text_from_clip(idx: str) :

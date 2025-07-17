@@ -186,7 +186,7 @@ export const zhHant: Partial<IIBI18nMap> = {
   unknownSavedDir: '找不到儲存的文件夾(配置文件中的outdir_save欄位)',
   Model: '模型',
   Sampler: '採樣器',
-  Scheduler: '調度器',
+  ScheduleType: '調度類型',
   lora: 'LoRA',
   size: '尺寸',
   pos: '正面提示',

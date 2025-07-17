@@ -47,7 +47,7 @@ const classSort = [
   'pos',
   'size',
   'sampler',
-  'scheduler',
+  'scheduleType',
   'Postprocess upscaler',
   'Postprocess upscale by',
 ].reduce((p, c, i) => {

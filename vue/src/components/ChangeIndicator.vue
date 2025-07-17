@@ -10,7 +10,7 @@ defineProps<{
 }>()
 
 function filterManualProps(diff: Record<string, unknown>) {
-  const manualProps = ['prompt', 'negativePrompt', 'seed', 'steps', 'cfgScale', 'size', 'Model', 'sampler', 'scheduler', 'others']
+  const manualProps = ['prompt', 'negativePrompt', 'seed', 'steps', 'cfgScale', 'size', 'Model', 'sampler', 'scheduleType', 'others']
   const otherKeys = Object.keys(diff).filter((key) => !manualProps.includes(key))
   return Object.fromEntries(otherKeys.map((key) => [key, diff[key]]))
 }
@@ -32,7 +32,7 @@ function hasOtherProps(diff: Record<string, unknown>) {
             <div class="sizeChangeIndicator changeIndicator" v-if="'size' in genDiffToPrevious.diff">Si</div>
             <div class="modelChangeIndicator changeIndicator" v-if="'Model' in genDiffToPrevious.diff">Mo</div>
             <div class="samplerChangeIndicator changeIndicator" v-if="'sampler' in genDiffToPrevious.diff">Sa</div>
-            <div class="schedulerChangeIndicator changeIndicator" v-if="'scheduler' in genDiffToPrevious.diff">Sc</div>
+            <div class="scheduleTypeChangeIndicator changeIndicator" v-if="'scheduleType' in genDiffToPrevious.diff">Sc</div>
             <div class="otherChangeIndicator changeIndicator" v-if="hasOtherProps(genDiffToPrevious.diff)">Ot</div>
         </div>
         <div class="hoverOverlay">
@@ -78,9 +78,9 @@ function hasOtherProps(diff: Record<string, unknown>) {
                         <td><strong>{{ genDiffToPrevious.diff.sampler[0] }}</strong><br/> vs {{ genDiffToPrevious.diff.sampler[1] }}
                         </td>
                     </tr>
-                    <tr v-if="'scheduler' in genDiffToPrevious.diff">
-                        <td><span class="schedulerChangeIndicator">Scheduler</span></td>
-                        <td><strong>{{ genDiffToPrevious.diff.scheduler[0] }}</strong><br/> vs {{ genDiffToPrevious.diff.scheduler[1] }}
+                    <tr v-if="'scheduleType' in genDiffToPrevious.diff">
+                        <td><span class="schedulerTypeChangeIndicator">Schedule Type</span></td>
+                        <td><strong>{{ genDiffToPrevious.diff.scheduleType[0] }}</strong><br/> vs {{ genDiffToPrevious.diff.scheduleType[1] }}
                         </td>
                     </tr>
                 </table>
@@ -105,7 +105,7 @@ function hasOtherProps(diff: Record<string, unknown>) {
             <div class="sizeChangeIndicator changeIndicator" v-if="'size' in genDiffToNext.diff">Si</div>
             <div class="modelChangeIndicator changeIndicator" v-if="'Model' in genDiffToNext.diff">Mo</div>
             <div class="samplerChangeIndicator changeIndicator" v-if="'sampler' in genDiffToNext.diff">Sa</div>
-            <div class="schedulerChangeIndicator changeIndicator" v-if="'scheduler' in genDiffToNext.diff">Sc</div>
+            <div class="scheduleTypeChangeIndicator changeIndicator" v-if="'scheduleType' in genDiffToNext.diff">Sc</div>
             <div class="otherChangeIndicator changeIndicator" v-if="hasOtherProps(genDiffToNext.diff)">Ot</div>
         </div>
         <div class="hoverOverlay">
@@ -147,9 +147,9 @@ function hasOtherProps(diff: Record<string, unknown>) {
                         <td><span class="samplerChangeIndicator">Sampler</span></td>
                         <td><strong>{{ genDiffToNext.diff.sampler[0] }}</strong><br/> vs {{ genDiffToNext.diff.sampler[1] }}</td>
                     </tr>
-                    <tr v-if="'scheduler' in genDiffToNext.diff">
-                        <td><span class="schedulerChangeIndicator">Scheduler</span></td>
-                        <td><strong>{{ genDiffToNext.diff.scheduler[0] }}</strong><br/> vs {{ genDiffToNext.diff.scheduler[1] }}</td>
+                    <tr v-if="'scheduleType' in genDiffToNext.diff">
+                        <td><span class="scheduleTypeChangeIndicator">Schedule Type</span></td>
+                        <td><strong>{{ genDiffToNext.diff.scheduleType[0] }}</strong><br/> vs {{ genDiffToNext.diff.scheduleType[1] }}</td>
                     </tr>
                 </table>
                 <br />
