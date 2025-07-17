@@ -1,11 +1,11 @@
 import base64
-import re
 from datetime import datetime, timedelta
 import io
 import os
 from pathlib import Path
 import shutil
 import sqlite3
+import re
 
 
 from scripts.iib.dir_cover_cache import get_top_4_media_info
@@ -121,7 +121,7 @@ def refetch_settings():
     conn = DataBase.get_conn()
     settings = GlobalSetting.get_all_settings(conn).get("global", {})
     if settings.get("comfyUISamplerNodeName") is not None:
-        ComfyUIParser.sampler_rex = re.compile(settings.get("comfyUISamplerNodeName"))
+        ComfyUIParser.set_sampler_rex(settings.get("comfyUISamplerNodeName"))
 
 refetch_settings()
 

@@ -17,6 +17,10 @@ class ComfyUIParser:
 
     sampler_rex = re.compile(r"^KSampler.*$")
 
+    @classmethod
+    def set_sampler_rex(clz, sampler_rex):
+        clz.sampler_rex = re.compile(sampler_rex, re.IGNORECASE)
+
     def __init__(self):
         pass
 
