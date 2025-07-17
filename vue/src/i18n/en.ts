@@ -235,6 +235,7 @@ You can specify which snapshot to restore to when starting IIB in the global set
   generateIndexHint: 'Generate index for search image',
   Model: 'Model',
   Sampler: 'Sampler',
+  Scheduler: 'Scheduler',
   lora: 'LoRA',
   size: 'Size',
   pos: 'Positive Prompt',

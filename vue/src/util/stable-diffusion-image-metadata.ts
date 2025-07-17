@@ -6,6 +6,7 @@ type ImageMeta = {
   negativePrompt?: string;
   steps?: string;
   sampler?: string;
+  scheduler?: string;
   cfgScale?: string;
   seed?: string;
   clipSkip?: string;
@@ -29,6 +30,7 @@ const imageMetadataKeys: Array<[string, string]> = [
   ['Seed', 'seed'],
   ['CFG scale', 'cfgScale'],
   ['Sampler', 'sampler'],
+  ['Scheduler', 'scheduler'],
   ['Steps', 'steps'],
   ['Clip skip', 'clipSkip'],
   ['Size', 'size'],

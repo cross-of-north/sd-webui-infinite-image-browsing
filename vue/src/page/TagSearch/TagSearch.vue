@@ -46,7 +46,8 @@ const classSort = [
   'lyco',
   'pos',
   'size',
-  'Sampler',
+  'sampler',
+  'scheduler',
   'Postprocess upscaler',
   'Postprocess upscale by',
 ].reduce((p, c, i) => {

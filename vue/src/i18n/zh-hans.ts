@@ -179,6 +179,7 @@ export const zhHans = {
   unknownSavedDir: '找不到保存的文件夹（配置文件中的outdir_save字段）',
   Model: '模型',
   Sampler: '采样器',
+  Scheduler: '调度器',
   lora: 'LoRA',
   size: '尺寸',
   pos: '正面提示',

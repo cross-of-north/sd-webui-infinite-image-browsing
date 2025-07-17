@@ -171,6 +171,7 @@ def build_single_img_idx(conn, file_path, is_rebuild, safe_save_img_tag):
     keys = [
         "Model",
         "Sampler",
+        "Scheduler",
         "Source Identifier",
         "Postprocess upscale by",
         "Postprocess upscaler",
